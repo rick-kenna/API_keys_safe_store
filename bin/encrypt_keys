@@ -1,8 +1,8 @@
 #!/bin/bash
 # Encrypt the keys in the keys file.
 
-key_file="/Users/rick/keys"
-en_key_file=/Users/rick/tmp/keys.en
+key_file="$HOME/keys"
+en_key_file=$HOME/keys.en
 rm ${en_key_file}
 
 # Read the key file a line at a time.

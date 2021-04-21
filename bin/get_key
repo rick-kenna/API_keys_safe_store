@@ -9,7 +9,7 @@ fi
 key_name=$1
 
 
-key_file="/Users/rick/keys"
+key_file="$HOME/keys"
 
 # Read the key file a line at a time.
 while read -r line
