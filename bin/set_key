@@ -1,0 +1,18 @@
+#!/bin/bash
+# Sets API_KEY to the named key.
+# Use source to export the key correctly.
+
+if [[ $_ == $0 ]] 
+then
+    echo "Script needs to be 'source'ed."
+    exit
+fi
+
+if (( $# == 0 ))
+then
+    exit
+fi
+
+key_name=$1
+
+export API_KEY=$(get_key ${key_name})

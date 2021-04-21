@@ -1,0 +1,29 @@
+#!/bin/bash
+# Encrypt the keys in the keys file.
+
+key_file="/Users/rick/keys"
+en_key_file=/Users/rick/tmp/keys.en
+rm ${en_key_file}
+
+# Read the key file a line at a time.
+while read -r line
+do
+    #echo "$line"
+    IFS=','
+    read -a strarr <<< "$line"
+    key=`echo "${strarr[1]}" | xargs`
+    key_name=${strarr[0]}
+
+    if [[ $key != ~!?!*!*! ]]
+    then
+        echo "Encrypt key for ${key_name}"
+        key=$(machina chunk encrypt -s "${key}")
+    else
+        echo "Key for ${key_name} already encrypted"
+    fi
+          
+    echo "${key_name}, ${key}" >> ${en_key_file}
+done < "$key_file"
+
+mv ${en_key_file} ${key_file}
+

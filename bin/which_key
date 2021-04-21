@@ -1,0 +1,27 @@
+#!/bin/bash
+# Return which key is in API_KEY
+
+key_file="/Users/rick/keys"
+
+# Read the key file a line at a time.
+while read -r line
+do
+    IFS=','
+    read -a strarr <<< "$line"
+    key=`echo "${strarr[1]}" | xargs`
+    #echo "${strarr[0]} : ${key}"
+
+    if [[ $key =~ ~!?!*!*! ]]
+    then
+        #echo "Decrypting"
+        key=$(machina chunk decrypt -s "${key}" 2> /dev/null)
+    fi
+
+    if [[ $key == $API_KEY ]]
+    then
+        echo "${strarr[0]}" 
+        break
+    fi
+          
+done < "$key_file"
+
