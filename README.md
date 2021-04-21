@@ -45,10 +45,16 @@ chojo_asia, Rvb93ixlpQ2kjh5
 Run `encrypt_keys` to encrypt them.  You can add new keys at a later time and run `encrypt_keys` again.
 The script will only encrupt the unencrypted keys.
 
-To fetch key and set the `API_KEY`, do: `source set_key chojo_asia`.  Feel free to change `API_KEY` to
-`ACME_API_KEY` to be more specific.
+To fetch key and set the `API_KEY`, **do:**
+
+```
+source set_key chojo_asia
+```
+
+Feel free to change `API_KEY` to `ACME_API_KEY` for example to be more specific.
 
 ## Why Encrypt and Decrypt using Ionic Security?
+
 Ionic Security allows you to set policy on each key.  If you wanted, you could have one key file and
 set up pollicies to share the keys with different groups.  There is a policy tutorial in Ionic
 Security's [tutorials](https://dev.ionic.com/tutorials).
